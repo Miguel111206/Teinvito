@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# SPA: las rutas /admin y /invite/:token funcionan al abrirlas o recargarlas directamente
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Frecuencia del keep alive (cron en UTC, mínimo 1 minuto).
+# Para desactivarlo sin tocar el código: KEEP_ALIVE_ENABLED=false en Netlify.
+[functions."keep-alive"]
+  schedule = "0 12 */3 * *"

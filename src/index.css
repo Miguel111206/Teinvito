@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  font-family: Poppins, system-ui, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+button { cursor: pointer; font-family: inherit; }
+button:disabled { cursor: not-allowed; }
+:focus-visible { outline: 3px solid #ec4899; outline-offset: 2px; }
